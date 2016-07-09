@@ -6,13 +6,12 @@ Private Const DEFAULT_SHEET_NAME As String = "é¿çsÉçÉO"
 Private s_sheet_name As String
 Private s_output_row As Long
 
-Private Sub tes_initialize_log_()
-    Dim ret As Boolean
-    ret = initialize_log_("sheet_name=test")
-End Sub
+'Private Sub tes_initialize_log_()
+'    Dim ret As Boolean
+'    ret = initialize_log_("sheet_name=test")
+'End Sub
 
 Public Function initialize_log_(prm As String) As Boolean
-    On Error GoTo Err
     On Error GoTo Err
     Dim so1 As Worksheet, so2 As Worksheet
     Set so1 = ActiveSheet
