@@ -101,8 +101,8 @@ Private Function get_level_string(level As en_log_lvl) As String
         get_level_string = "ERROR"
     ElseIf level = wnglog Then
         get_level_string = "WARNING"
-    ElseIf level = wnglog Then
-        get_level_string = "WARNING"
+    ElseIf level = inflog Then
+        get_level_string = "INFOMATION"
     Else
         get_level_string = "DEBUG" & CStr(level)
     End If

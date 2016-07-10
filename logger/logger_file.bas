@@ -45,6 +45,9 @@ Public Function finalize_log_() As Boolean
         Exit Function
     End If
     Close s_fd
+    s_opnflg = False
+    s_file_name = ""
+    s_fd = -1
     finalize_log_ = True
 Err:
     If Err.Number <> 0 Then
