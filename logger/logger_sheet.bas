@@ -6,10 +6,10 @@ Private Const DEFAULT_SHEET_NAME As String = "é¿çsÉçÉO"
 Private s_sheet_name As String
 Private s_output_row As Long
 
-'Private Sub tes_initialize_log_()
-'    Dim ret As Boolean
-'    ret = initialize_log_("sheet_name=test")
-'End Sub
+Private Sub tes_initialize_log_()
+    Dim ret As Boolean
+    ret = initialize_log_("sheet_name=test")
+End Sub
 
 Public Function initialize_log_(prm As String) As Boolean
     On Error GoTo Err
@@ -29,6 +29,7 @@ Public Function initialize_log_(prm As String) As Boolean
         End If
     Next
     Do
+'        If Not so Is Empty Then
         If ff = True Then
             Set so2 = ThisWorkbook.Sheets(s_sheet_name)
             so2.Activate
@@ -86,10 +87,19 @@ Err:
     End If
 End Function
 
-'Private Sub tes_clear_logsht()
-'    s_sheet_name = "test"
-'    clear_logsht
-'End Sub
+Private Sub tes001()
+'    MsgBox Sheets("test")
+'    Dim so As Worksheet: Set so = Sheets("test")
+    Dim s As Variant
+    For Each s In ThisWorkbook.Sheets
+        MsgBox s.Name
+    Next
+End Sub
+
+Private Sub tes_clear_logsht()
+    s_sheet_name = "test"
+    clear_logsht
+End Sub
 
 'êÊì™ÇÃÉJÉâÉÄÇæÇØÇí≤Ç◊ÇÈ
 Private Function get_next_logrow(so As Worksheet) As Long
@@ -127,3 +137,4 @@ Err:
         Debug.Print "clear_logsht(): " & Err.Description
     End If
 End Function
+

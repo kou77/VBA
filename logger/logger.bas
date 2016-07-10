@@ -17,6 +17,8 @@ Private s_level As Long
 Private s_errlog_count As Long
 Private s_wnglog_count As Long
 Private s_inflog_count As Long
+Private s_first_err_message As String
+Private s_first_err_time As String
 
 Public Function set_logger_prm( _
         i_fnc_str As String, _
@@ -48,6 +50,8 @@ Public Function initialize_log(Optional prm As String = "", Optional callback As
     s_errlog_count = 0
     s_wnglog_count = 0
     s_inflog_count = 0
+    s_first_err_message = ""
+    s_first_err_time = ""
 Err:
     If Err.Number <> 0 Then
         Debug.Print "initialize_log(): " & Err.Description
@@ -75,6 +79,10 @@ Public Function output_log( _
     If Application.Run(cb, ts, ls, ms) = True Then
         If level = errlog Then
             s_errlog_count = s_errlog_count + 1
+            If s_first_err_message = "" Then
+                s_first_err_message = ms
+                s_first_err_time = ts
+            End If
         ElseIf level = wnglog Then
             s_wnglog_count = s_wnglog_count + 1
         ElseIf level = inflog Then
@@ -93,8 +101,8 @@ Private Function get_level_string(level As en_log_lvl) As String
         get_level_string = "ERROR"
     ElseIf level = wnglog Then
         get_level_string = "WARNING"
-    ElseIf level = inflog Then
-        get_level_string = "INFOMATION"
+    ElseIf level = wnglog Then
+        get_level_string = "WARNING"
     Else
         get_level_string = "DEBUG" & CStr(level)
     End If
@@ -106,6 +114,11 @@ Public Function finalize_log(Optional callback As String = "") As Boolean
     If Len(cb) = 0 Then
         Exit Function
     End If
+    s_errlog_count = 0
+    s_wnglog_count = 0
+    s_inflog_count = 0
+    s_first_err_message = ""
+    s_first_err_time = ""
     finalize_log = Application.Run(cb)
 Err:
     If Err.Number <> 0 Then
@@ -118,3 +131,10 @@ Public Sub get_log_count(errcnt As Long, wngcnt As Long, infcnt As Long)
     wngcnt = s_wnglog_count
     infcnt = s_inflog_count
 End Sub
+
+Public Sub get_first_errlog(em As String, et As String)
+    em = s_first_err_message
+    et = s_first_err_time
+End Sub
+
+
