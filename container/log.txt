@@ -1,0 +1,10 @@
+2016/10/12 17:45:57.792,ERROR,tes001(): error message test1
+2016/10/12 17:46:00.714,WARNING,tes001(): warning message test1
+2016/10/12 17:46:00.714,INFOMATION,tes001(): infomation message test1
+2016/10/12 17:46:00.714,ERROR,tes001(): error message test2
+2016/10/12 17:46:00.714,DEBUG1,tes_lvl_001(): debug level_1
+2016/10/12 17:47:25.316,ERROR,tes001(): error message test1
+2016/10/12 17:47:25.316,WARNING,tes001(): warning message test1
+2016/10/12 17:47:25.316,INFOMATION,tes001(): infomation message test1
+2016/10/12 17:47:25.316,ERROR,tes001(): error message test2
+2016/10/12 17:47:25.316,DEBUG1,tes_lvl_001(): debug level_1
